@@ -12,7 +12,7 @@ This article [Building an Enterprise-Level Real-Time Data Lake Based on Flink an
 #### Real time Delta Lake
 In this example, data is made available from Kafka in a Trino Iceberg table in real-time via Flink stream processing.
 
-![Kafka Flink Iceberg Trino](https://drive.google.com/file/d/1Kxlnn0SAQ7hqr5WJVz3kpc14hyTzwre7/view?usp=sharing)
+<img src="https://drive.google.com/uc?export=view&id=1Kxlnn0SAQ7hqr5WJVz3kpc14hyTzwre7" alt="Kafka Flink Iceberg Trino" style="width:800px;" border="1"/>
 
 
 These are the layers used in this demo:
@@ -30,6 +30,6 @@ These are the layers used in this demo:
 4. Note all of the parameters from the steps above and update the constants in the `Driver.Configurations` class.
 
 #### Running the Demo
-1. Run Driver::Main to setup and initiate the Flink pipeline. Make sure that there are no errors. Once ready, the pipeline becomes ready to process the data.
-2. Run SampleGenerator::Main that ingests records to Kafka source topics. Within a short time, based on the configured Flink [check-point](https://nightlies.apache.org/flink/flink-docs-master/docs/ops/state/checkpoints/), data becomes available in the table
-3. Run TrinoIcebergReader::Main to read data from the sample table via the Trino engine.
+1. Run [Driver::Main](main/src/main/java/com/foo/bar/pipeline/Driver.java) to setup and initiate the Flink pipeline. Make sure that there are no errors. Once ready, the pipeline becomes ready to process the data.
+2. Run [SampleGenerator::Main](main/src/main/java/com/foo/bar/sample/producer/SampleGenerator.java) that ingests records to Kafka source topics. Within a short time, based on the configured Flink [check-point](https://nightlies.apache.org/flink/flink-docs-master/docs/ops/state/checkpoints/), data becomes available in the table
+3. Run [TrinoIcebergReader::Main](main/src/main/java/com/foo/bar/trino/TrinoIcebergReader.java) to read data from the sample table via the Trino engine.
