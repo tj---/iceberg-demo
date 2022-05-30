@@ -10,7 +10,7 @@ These are some of the features of Apache Iceberg table format:
 This article [Building an Enterprise-Level Real-Time Data Lake Based on Flink and Iceberg](https://alibaba-cloud.medium.com/building-an-enterprise-level-real-time-data-lake-based-on-flink-and-iceberg-6ea2f26c8a00) on Alibaba Engineering, talks in detail about the architectural patterns that may be realized to achieve a functioning Real time Data Lake
 
 #### Real time Delta Lake
-In this example, data is made available from Kafka in a Trino Iceberg table in real-time via Flink stream processing.
+In this bare bones example, data is made available from Kafka in a Trino Iceberg table in real-time via Flink stream processing.
 
 <img src="https://drive.google.com/uc?export=view&id=1Kxlnn0SAQ7hqr5WJVz3kpc14hyTzwre7" alt="Kafka Flink Iceberg Trino" style="width:800px;" border="1"/>
 
