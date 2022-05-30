@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.foo.bar</groupId>
+    <artifactId>iceberg-demo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+    
+    <dependencies>
+    
+    	<!-- Flink Dependencies -->
+		<dependency>
+		    <groupId>org.apache.flink</groupId>
+		    <artifactId>flink-core</artifactId>
+		    <version>1.15.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.flink</groupId>
+		    <artifactId>flink-streaming-java</artifactId>
+		    <version>1.15.0</version>
+		</dependency>
+		<dependency>
+	        <groupId>org.apache.flink</groupId>
+	        <artifactId>flink-clients</artifactId>
+	        <version>1.15.0</version>
+		 </dependency>		
+		<dependency>
+		    <groupId>org.apache.flink</groupId>
+		    <artifactId>flink-table-common</artifactId>
+		    <version>1.15.0</version>
+		</dependency>		
+		<dependency>
+		    <groupId>org.apache.flink</groupId>
+		    <artifactId>flink-table-runtime</artifactId>
+		    <version>1.15.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.flink</groupId>
+		    <artifactId>flink-connector-kafka</artifactId>
+		    <version>1.15.0</version>
+		</dependency>
+		
+		<!-- Logger -->
+		<dependency>
+		    <groupId>ch.qos.logback</groupId>
+		    <artifactId>logback-classic</artifactId>
+		    <version>1.2.3</version>
+		</dependency>
+
+		
+		<!-- Iceberg related dependencies. There is no official release available for Iceberg with Flink version 1.15
+			Hence, download the relevant jars from the nightly builds (https://repository.apache.org/content/repositories/snapshots/org/apache/iceberg/)
+			and install them in your local mvn (https://stackoverflow.com/a/4955695/174184)
+		-->
+		<dependency>
+			<groupId>org.apache.iceberg</groupId>
+			<artifactId>iceberg-flink-runtime-1.15</artifactId>
+			<version>0.14.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.iceberg</groupId>
+			<artifactId>iceberg-api-1.15</artifactId>
+			<version>0.14.0-SNAPSHOT</version>
+		</dependency>
+		
+		<!-- Managing dependency mess created by iceberg runtime -->
+		<dependency>
+		    <groupId>org.apache.hive</groupId>
+		    <artifactId>hive-common</artifactId>
+		    <version>2.3.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.hive</groupId>
+			<artifactId>hive-metastore</artifactId>
+			<version>2.3.9</version>
+			<exclusions>
+			    <exclusion>
+			      <artifactId>jdk.tools</artifactId>
+			      <groupId>jdk.tools</groupId>
+			    </exclusion>
+				<exclusion>
+					<artifactId>org.apache.hbase</artifactId>
+					<groupId>hbase-client</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>com.google.protobuf</artifactId>
+					<groupId>protobuf-java</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>org.apache.hadoop</artifactId>
+					<groupId>hadoop-common</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-common</artifactId>
+			<version>2.6.5</version>
+		</dependency>
+		
+		<!-- GCS connector -->
+		<dependency>
+		    <groupId>com.google.cloud.bigdataoss</groupId>
+		    <artifactId>gcs-connector</artifactId>
+		    <version>1.9.4-hadoop3</version>
+		    <classifier>shaded</classifier>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.24</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.13.3</version>
+		</dependency>
+
+		<!-- For Kafka Source and Sink -->
+		<dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-streams</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+        
+        <!-- Trino (Presto) Driver -->
+    	<dependency>
+			<groupId>io.trino</groupId>
+		    <artifactId>trino-jdbc</artifactId>
+		    <version>381</version>
+		</dependency>
+		
+		
+    </dependencies>
+
+</project>
